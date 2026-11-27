@@ -1,0 +1,44 @@
+PAKET CBT OFFLINE PWA - MATEMATIKA KELAS 5 SD RAJAWALI
+
+FITUR
+- 25 soal pilihan ganda (topik bilangan cacah, pecahan, KPK/FPB, keliling dan luas bangun datar).
+- Nilai otomatis, maksimum 100.
+- Penyimpanan hasil lokal di browser (localStorage).
+- Dashboard guru lokal dengan PIN.
+- Ekspor CSV dan cadangan JSON.
+- Service worker untuk cache offline setelah instalasi awal.
+
+PENTING TENTANG OFFLINE
+PWA harus pertama kali dibuka dari alamat HTTPS saat internet tersedia agar service worker dapat menyimpan aplikasi untuk offline. Setelah itu siswa dapat memasang ke layar utama dan membuka tanpa internet.
+Jangan hanya mengirim file index.html saja; semua file dalam folder harus ikut.
+
+CARA PUBLIKASI (DISARANKAN: GitHub Pages)
+1. Buat akun / masuk ke https://github.com
+2. Buat repository baru, misalnya cbt-matematika-rajawali (Public).
+3. Upload semua isi folder ZIP ini ke root repository (index.html, questions.json, manifest.webmanifest, sw.js, folder icons).
+4. Buka Settings > Pages.
+5. Pada Build and deployment pilih Deploy from a branch, Branch main, folder /(root), lalu Save.
+6. Tunggu alamat HTTPS GitHub Pages aktif. Buka alamat itu di Chrome Android saat internet ada.
+7. Tunggu halaman selesai dimuat; bila perlu refresh sekali. Pilih menu Chrome ⋮ > Install app atau Tambahkan ke layar utama.
+8. Setelah terpasang, aktifkan mode pesawat dan coba buka aplikasi. Jika halaman masih terbuka, uji fungsi offline.
+Chromebook: buka alamat HTTPS di Chrome, menu ⋮ > Install page as app bila tersedia.
+
+PIN DEFAULT - WAJIB DIGANTI SEBELUM DIBAGIKAN
+- PIN ujian siswa: 202627
+- PIN dashboard guru: 262626
+Untuk mengganti PIN, ubah konstanta EXAM_PIN dan TEACHER_PIN pada bagian script di index.html sebelum mengunggah/publikasi.
+
+CARA GURU MENGAMBIL NILAI
+1. Buka aplikasi pada perangkat yang menyimpan hasil ujian.
+2. Buka dashboard guru dengan menambahkan #guru di belakang alamat, misalnya https://alamat-aplikasi/#guru, atau gunakan bagian dashboard pada aplikasi.
+3. Masukkan PIN guru.
+4. Klik UNDUH CSV atau CADANGKAN DATA (JSON).
+5. Kirim file CSV kepada guru melalui Bluetooth, kabel USB, email, atau saat internet tersedia.
+
+BATASAN PENTING
+- Data hasil disimpan pada browser/perangkat yang mengerjakan ujian. Data tidak otomatis masuk ke HP guru dan tidak tersinkron antarperangkat.
+- Untuk mengumpulkan nilai satu kelas, setiap perangkat harus mengekspor hasilnya. Jika seorang siswa menggunakan perangkat berbeda, hasilnya tersimpan di perangkat tersebut.
+- Jangan hapus data situs / cache browser sebelum ekspor.
+- PIN di aplikasi statis bukan sistem keamanan kuat; jangan gunakan untuk ujian berisiko tinggi.
+- Uji aplikasi dengan beberapa HP/Chromebook terlebih dahulu.
+- Bank soal dapat disesuaikan dengan mengedit questions.json. answer menggunakan indeks 0 untuk A, 1 untuk B, 2 untuk C, 3 untuk D.

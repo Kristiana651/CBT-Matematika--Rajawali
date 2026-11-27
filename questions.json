@@ -1,0 +1,277 @@
+[
+  {
+    "id": "m1",
+    "question": "Nilai angka 7 pada bilangan 47.325 adalah ...",
+    "options": [
+      "7",
+      "70",
+      "7.000",
+      "70.000"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "m2",
+    "question": "Bilangan terbesar di antara pilihan berikut adalah ...",
+    "options": [
+      "45.678",
+      "45.876",
+      "45.768",
+      "45.687"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m3",
+    "question": "Hasil dari 23.450 + 12.375 adalah ...",
+    "options": [
+      "35.725",
+      "35.825",
+      "36.825",
+      "34.825"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m4",
+    "question": "Hasil dari 50.000 − 18.750 adalah ...",
+    "options": [
+      "31.250",
+      "32.250",
+      "31.350",
+      "30.250"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "m5",
+    "question": "Bentuk panjang dari 36.204 adalah ...",
+    "options": [
+      "30.000 + 6.000 + 200 + 4",
+      "3.000 + 600 + 20 + 4",
+      "30.000 + 600 + 20 + 4",
+      "36.000 + 20 + 4"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "m6",
+    "question": "Hasil dari 3/8 + 2/8 adalah ...",
+    "options": [
+      "5/16",
+      "5/8",
+      "1/8",
+      "6/8"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m7",
+    "question": "Hasil dari 1/2 + 1/4 adalah ...",
+    "options": [
+      "2/6",
+      "3/4",
+      "1/6",
+      "2/4"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m8",
+    "question": "Hasil dari 2 1/3 + 1 1/3 adalah ...",
+    "options": [
+      "3 2/3",
+      "3 1/3",
+      "4 2/3",
+      "2 2/3"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "m9",
+    "question": "Pecahan 6/9 jika disederhanakan menjadi ...",
+    "options": [
+      "3/9",
+      "2/3",
+      "1/3",
+      "6/3"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m10",
+    "question": "Ibu memiliki 3/4 kg gula. Digunakan 1/4 kg. Sisa gula adalah ...",
+    "options": [
+      "1/2 kg",
+      "3/4 kg",
+      "1/3 kg",
+      "3/8 kg"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "m11",
+    "question": "KPK dari 6 dan 8 adalah ...",
+    "options": [
+      "12",
+      "18",
+      "24",
+      "48"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "m12",
+    "question": "FPB dari 24 dan 36 adalah ...",
+    "options": [
+      "6",
+      "8",
+      "12",
+      "18"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "m13",
+    "question": "KPK dari 5 dan 7 adalah ...",
+    "options": [
+      "12",
+      "25",
+      "30",
+      "35"
+    ],
+    "answer": 3
+  },
+  {
+    "id": "m14",
+    "question": "FPB dari 45 dan 60 adalah ...",
+    "options": [
+      "5",
+      "10",
+      "15",
+      "20"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "m15",
+    "question": "Lampu A menyala setiap 4 menit dan lampu B setiap 6 menit. Keduanya menyala bersama setiap ...",
+    "options": [
+      "10 menit",
+      "12 menit",
+      "18 menit",
+      "24 menit"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m16",
+    "question": "Keliling persegi dengan sisi 8 cm adalah ...",
+    "options": [
+      "16 cm",
+      "24 cm",
+      "32 cm",
+      "64 cm"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "m17",
+    "question": "Luas persegi dengan sisi 9 cm adalah ...",
+    "options": [
+      "18 cm²",
+      "36 cm²",
+      "72 cm²",
+      "81 cm²"
+    ],
+    "answer": 3
+  },
+  {
+    "id": "m18",
+    "question": "Keliling persegi panjang dengan panjang 12 cm dan lebar 5 cm adalah ...",
+    "options": [
+      "17 cm",
+      "34 cm",
+      "60 cm",
+      "24 cm"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m19",
+    "question": "Luas persegi panjang dengan panjang 10 cm dan lebar 6 cm adalah ...",
+    "options": [
+      "16 cm²",
+      "32 cm²",
+      "60 cm²",
+      "100 cm²"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "m20",
+    "question": "Keliling segitiga dengan sisi 7 cm, 8 cm, dan 9 cm adalah ...",
+    "options": [
+      "16 cm",
+      "23 cm",
+      "24 cm",
+      "56 cm"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "m21",
+    "question": "Keliling jajar genjang dengan sisi 10 cm dan 6 cm adalah ...",
+    "options": [
+      "16 cm",
+      "32 cm",
+      "60 cm",
+      "64 cm"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m22",
+    "question": "Luas segitiga dengan alas 12 cm dan tinggi 8 cm adalah ...",
+    "options": [
+      "20 cm²",
+      "48 cm²",
+      "96 cm²",
+      "40 cm²"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m23",
+    "question": "Keliling belah ketupat dengan panjang sisi 7 cm adalah ...",
+    "options": [
+      "14 cm",
+      "21 cm",
+      "28 cm",
+      "49 cm"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "m24",
+    "question": "Keliling lingkaran dengan diameter 14 cm (π = 22/7) adalah ...",
+    "options": [
+      "22 cm",
+      "44 cm",
+      "88 cm",
+      "154 cm"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "m25",
+    "question": "Luas lingkaran dengan jari-jari 7 cm (π = 22/7) adalah ...",
+    "options": [
+      "44 cm²",
+      "88 cm²",
+      "144 cm²",
+      "154 cm²"
+    ],
+    "answer": 3
+  }
+]

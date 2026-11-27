@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#174ea6"><meta name="description" content="CBT Offline Matematika Kelas 5 SD Rajawali">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png">
+<title>CBT Matematika Kelas 5 - SD Rajawali</title>
+<style>
+:root{--blue:#174ea6;--ink:#17233b;--muted:#667085;--bg:#f2f5fa;--line:#d6deeb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px Arial,sans-serif}
+header{background:linear-gradient(120deg,#174ea6,#3478d4);color:white;text-align:center;padding:22px 14px}
+header h1{font-size:clamp(21px,4vw,30px);margin:0 0 8px}header p{margin:0;font-size:15px}
+main{max-width:850px;margin:20px auto;padding:0 13px 35px}.card{background:white;border-radius:17px;padding:20px;margin-bottom:16px;box-shadow:0 5px 20px #1b376010}
+h2{margin:0 0 14px;font-size:22px}p{line-height:1.5}.muted{color:var(--muted)}.notice{background:#fff5df;color:#815500;padding:13px;border-radius:10px;line-height:1.5}
+label{display:block;font-weight:bold;margin:13px 0 6px}input,select{width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:10px;font-size:17px;background:white}
+button{border:0;border-radius:10px;padding:14px 17px;background:var(--blue);color:white;font-size:16px;font-weight:bold;cursor:pointer}
+button.secondary{background:#e8eef8;color:var(--blue)}button:disabled{opacity:.55}
+.full{width:100%;margin-top:15px}.hidden{display:none!important}.error{color:#b42318}.success{color:#087443}
+.topline{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.progress{height:9px;background:#e8eef8;border-radius:9px;overflow:hidden;margin:13px 0}.bar{height:100%;background:#247a55;width:0}
+.question{font-size:19px;font-weight:bold;line-height:1.45;margin:18px 0}.choice{display:flex;align-items:flex-start;gap:11px;padding:13px;border:1px solid var(--line);border-radius:10px;margin:9px 0;font-weight:normal;cursor:pointer}.choice input{width:auto;margin:2px 0 0;transform:scale(1.15)}.nav{display:flex;gap:10px;margin-top:18px}.nav button{flex:1}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:14px}.qnum{padding:10px 0;background:#edf2f8;color:var(--ink);border-radius:8px}.qnum.done{background:#d9f1e5;color:#075c39}.qnum.current{outline:2px solid var(--blue)}
+footer{text-align:center;color:var(--muted);padding:10px;font-size:13px}
+table{border-collapse:collapse;width:100%;min-width:620px}th,td{text-align:left;padding:10px;border-bottom:1px solid #e3e8ef}th{background:#f0f4fa}.tablewrap{overflow:auto}
+@media(max-width:520px){.card{padding:16px}.grid{grid-template-columns:repeat(5,1fr)}.question{font-size:18px}.nav button{padding:12px 8px;font-size:14px}}
+</style></head>
+<body>
+<header><h1>UJIAN MATEMATIKA KELAS 5</h1><p>SD RAJAWALI · SEMESTER 1 · TAHUN AJARAN 2026/2027</p></header>
+<main>
+<section id="home" class="card">
+<h2>Selamat Datang, Peserta Ujian!</h2>
+<p class="muted">Ujian terdiri dari 25 soal pilihan ganda. Setiap soal bernilai 4 poin. Nilai maksimal 100.</p>
+<div class="notice">Aplikasi ini dapat digunakan tanpa internet setelah berhasil dipasang dan dibuka setidaknya satu kali saat masih online. Kerjakan secara mandiri dan periksa kembali jawaban sebelum mengirim.</div>
+<label>Nama lengkap siswa</label><input id="studentName" autocomplete="name" placeholder="Masukkan nama lengkap">
+<label>Kelas</label><input id="studentClass" value="5" readonly>
+<label>PIN Ujian</label><input id="examPin" inputmode="numeric" type="password" placeholder="Masukkan PIN dari guru">
+<button class="full" id="startBtn">MULAI UJIAN</button><p id="homeMsg" class="error"></p>
+<button class="full secondary" id="installBtn" style="display:none">PASANG APLIKASI DI HP</button>
+</section>
+
+<section id="exam" class="card hidden">
+<div class="topline"><b id="counter">Soal 1 dari 25</b><span id="answered" class="muted">Terjawab 0/25</span></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div id="question" class="question"></div><div id="choices"></div>
+<div class="nav"><button class="secondary" id="prevBtn">SEBELUMNYA</button><button id="nextBtn">BERIKUTNYA</button></div>
+<div class="grid" id="numbers"></div>
+<button class="full" id="finishBtn">SELESAI & KIRIM JAWABAN</button>
+<p class="muted">Jawaban tersimpan otomatis di perangkat ini selama ujian berlangsung.</p>
+</section>
+
+<section id="result" class="card hidden">
+<h2>Ujian Selesai!</h2><p id="resultName"></p><h1 id="resultScore" style="color:#174ea6;font-size:42px;margin:10px 0"></h1><p id="resultDetail" class="muted"></p>
+<div class="notice">Hasil sudah tersimpan di perangkat ini. Beritahukan guru agar hasil dapat diekspor dari menu Dashboard Guru.</div>
+<button class="full secondary" id="homeAgain">KEMBALI KE BERANDA</button>
+</section>
+
+<section id="teacher" class="card hidden">
+<h2>Dashboard Guru</h2><p class="muted">Masukkan PIN guru untuk melihat hasil yang tersimpan pada perangkat ini.</p>
+<label>PIN Guru</label><input id="teacherPin" type="password" inputmode="numeric" placeholder="PIN guru">
+<button class="full" id="teacherLogin">LIHAT HASIL NILAI</button><p id="teacherMsg" class="error"></p>
+<div id="teacherData" class="hidden">
+<div class="topline"><h2>Rekap Hasil</h2><button class="secondary" id="csvBtn">UNDUH CSV</button></div>
+<p id="resultCount"></p><div class="tablewrap"><table><thead><tr><th>No</th><th>Nama</th><th>Kelas</th><th>Benar</th><th>Nilai</th><th>Waktu</th></tr></thead><tbody id="resultRows"></tbody></table></div>
+<button class="full secondary" id="jsonBtn">CADANGKAN DATA (JSON)</button>
+<p class="muted">Data tersimpan di browser/perangkat ini. Ekspor CSV/JSON secara berkala dan kirimkan file kepada guru. Untuk menggabungkan hasil dari banyak HP, guru dapat mengumpulkan file CSV dari setiap siswa/perangkat.</p>
+</div></section>
+</main><footer>SD Rajawali · CBT Matematika Offline · Kelas 5</footer>
+<script>
+const $=id=>document.getElementById(id);
+const EXAM_PIN='202627', TEACHER_PIN='262626', DB_KEY='rajawali_math_results_v1';
+let bank=[],answers={},pos=0,active=false;
+let deferredInstall=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('installBtn').style.display='block'});
+$('installBtn').onclick=async()=>{if(deferredInstall){deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null}else alert('Gunakan menu Chrome ⋮ lalu pilih Tambahkan ke layar utama / Install app.')};
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+function getResults(){try{return JSON.parse(localStorage.getItem(DB_KEY)||'[]')}catch(e){return []}}
+function saveResults(rows){localStorage.setItem(DB_KEY,JSON.stringify(rows))}
+function show(id){['home','exam','result','teacher'].forEach(x=>$(x).classList.toggle('hidden',x!==id))}
+async function loadBank(){let r=await fetch('./questions.json');if(!r.ok)throw Error('Bank soal tidak ditemukan');bank=await r.json()}
+$('startBtn').onclick=async()=>{
+ $('homeMsg').textContent='';
+ if(!$('studentName').value.trim()){ $('homeMsg').textContent='Nama lengkap wajib diisi.';return}
+ if($('examPin').value!==EXAM_PIN){$('homeMsg').textContent='PIN ujian salah. Minta PIN kepada guru.';return}
+ try{if(!bank.length)await loadBank();answers={};pos=0;active=true;show('exam');render()}catch(e){$('homeMsg').textContent='Gagal memuat soal. Buka aplikasi sekali saat online, lalu coba lagi.'}
+};
+function render(){
+ let q=bank[pos];$('counter').textContent=`Soal ${pos+1} dari ${bank.length}`;$('answered').textContent=`Terjawab ${Object.keys(answers).length}/${bank.length}`;$('bar').style.width=(Object.keys(answers).length/bank.length*100)+'%';
+ $('question').textContent=(pos+1)+'. '+q.question;
+ $('choices').innerHTML=q.options.map((v,i)=>`<label class="choice"><input type="radio" name="answer" value="${i}" ${answers[q.id]===i?'checked':''}><span>${String.fromCharCode(65+i)}. ${escapeHtml(v)}</span></label>`).join('');
+ document.querySelectorAll('input[name="answer"]').forEach(x=>x.onchange=()=>{answers[q.id]=Number(x.value);renderNav()});
+ $('prevBtn').disabled=pos===0;$('nextBtn').textContent=pos===bank.length-1?'SOAL TERAKHIR':'BERIKUTNYA';renderNav();
+}
+function renderNav(){$('numbers').innerHTML=bank.map((q,i)=>`<button class="qnum ${answers[q.id]!==undefined?'done':''} ${i===pos?'current':''}" data-i="${i}">${i+1}</button>`).join('');document.querySelectorAll('.qnum').forEach(x=>x.onclick=()=>{pos=Number(x.dataset.i);render()});$('answered').textContent=`Terjawab ${Object.keys(answers).length}/${bank.length}`;$('bar').style.width=(Object.keys(answers).length/bank.length*100)+'%'}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('prevBtn').onclick=()=>{if(pos>0){pos--;render()}};
+$('nextBtn').onclick=()=>{if(pos<bank.length-1){pos++;render()}};
+$('finishBtn').onclick=()=>{
+ let blank=bank.filter(q=>answers[q.id]===undefined).length;
+ if(blank&&!confirm(`Masih ada ${blank} soal belum dijawab. Tetap kirim?`))return;
+ if(!confirm('Yakin ingin menyelesaikan ujian? Jawaban tidak dapat diubah setelah dikirim.'))return;
+ let correct=bank.filter(q=>answers[q.id]===q.answer).length,score=Math.round(correct/bank.length*100);
+ let row={name:$('studentName').value.trim(),className:'5',correct,total:bank.length,score,time:new Date().toLocaleString('id-ID'),subject:'Matematika'};
+ let all=getResults();all.push(row);saveResults(all);active=false;
+ $('resultName').textContent='Nama: '+row.name;$('resultScore').textContent='Nilai: '+score;$('resultDetail').textContent=`Jawaban benar ${correct} dari ${bank.length} soal.`;show('result');
+};
+$('homeAgain').onclick=()=>{ $('examPin').value='';show('home')};
+$('teacherLogin').onclick=()=>{
+ if($('teacherPin').value!==TEACHER_PIN){$('teacherMsg').textContent='PIN guru salah.';return}
+ $('teacherMsg').textContent='';$('teacherData').classList.remove('hidden');drawResults();
+};
+function drawResults(){let rows=getResults();$('resultCount').textContent='Jumlah peserta tersimpan di perangkat ini: '+rows.length;$('resultRows').innerHTML=rows.map((r,i)=>`<tr><td>${i+1}</td><td>${escapeHtml(r.name)}</td><td>${r.className}</td><td>${r.correct}/${r.total}</td><td><b>${r.score}</b></td><td>${escapeHtml(r.time)}</td></tr>`).join('')}
+function download(name,content,type){let a=document.createElement('a'),u=URL.createObjectURL(new Blob([content],{type}));a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+$('csvBtn').onclick=()=>{let rows=getResults(),head=['Nama','Kelas','Mata Pelajaran','Benar','Jumlah Soal','Nilai','Waktu'],data=rows.map(r=>[r.name,r.className,r.subject,r.correct,r.total,r.score,r.time]);let csv='\\uFEFF'+[head,...data].map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\\r\\n');download('Rekap_CBT_Matematika_Rajawali.csv',csv,'text/csv;charset=utf-8')};
+$('jsonBtn').onclick=()=>download('Cadangan_CBT_Matematika_Rajawali.json',JSON.stringify(getResults(),null,2),'application/json');
+if(location.hash==='#guru')show('teacher');
+</script></body></html>
